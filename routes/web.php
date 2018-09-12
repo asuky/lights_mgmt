@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LightController@index');
+Route::put('/', 'LightController@putState');
+
+Route::get('/1/on', 'LightController@lighton');
+Route::get('/1/off', 'LightController@lightoff');
