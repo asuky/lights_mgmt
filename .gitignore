@@ -13,3 +13,7 @@ yarn-error.log
 .env
 .phpunit.result.cache
 nbproject/
+/public/js
+/public/css
+/public/build
+/public/mix-manifest.json
