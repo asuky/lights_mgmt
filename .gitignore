@@ -1,6 +1,11 @@
 /node_modules
-/public/hot
-/public/storage
+/public
+#/public/hot
+#/public/storage
+#/public/js
+#/public/css
+#/public/build
+#/public/mix-manifest.json
 /storage/*.key
 /vendor
 /.idea
@@ -13,7 +18,3 @@ yarn-error.log
 .env
 .phpunit.result.cache
 nbproject/
-/public/js
-/public/css
-/public/build
-/public/mix-manifest.json
