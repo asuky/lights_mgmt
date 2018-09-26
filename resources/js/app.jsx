@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider, connect } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducers/reducers';
-import { TOGGLE, toggleLight } from './actions/actions';
+import { TOGGLE, toggleLight, requesting } from './actions/actions';
+import { ajaxSaga } from './sagas/ajax';
 
 import MainUI from './components/MainUI';
 
@@ -21,7 +23,13 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 //require('./components/MainUI');
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+    rootReducer,
+    applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(ajaxSaga);
 
 function mapStateToProps(state) {
     return {
@@ -34,7 +42,8 @@ function mapDispatchToProps(dispatch) {
         handleClick: () => { 
             console.log("handleClick!");
             console.log(store.getState());
-            dispatch(toggleLight(store.getState())); 
+            dispatch(requesting());
+            //dispatch(toggleLight(store.getState())); 
         }
     };
 }

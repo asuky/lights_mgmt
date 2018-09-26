@@ -1,8 +1,15 @@
 export const TOGGLE='TOGGLE';
+export const REQUESTING='REQUESTING';
 
 export function toggleLight() {
     return {
         type: TOGGLE
+    }
+}
+
+export function requesting() {
+    return {
+        type: REQUESTING
     }
 }
 
