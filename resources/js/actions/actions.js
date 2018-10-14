@@ -1,5 +1,7 @@
 export const TOGGLE='TOGGLE';
 export const REQUESTING='REQUESTING';
+export const INIT='INIT';
+export const SET='SET';
 
 export function toggleLight() {
     return {
@@ -10,6 +12,19 @@ export function toggleLight() {
 export function requesting() {
     return {
         type: REQUESTING
+    }
+}
+
+export function initLight() {
+    return {
+        type: INIT
+    }
+}
+
+export function setLight(data) {
+    return {
+        type: SET,
+        payload: data
     }
 }
 

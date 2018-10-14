@@ -14,5 +14,6 @@
 Route::get('/', 'LightController@index');
 Route::put('/', 'LightController@putState');
 
+Route::get('/list', 'LightController@listLights');
 Route::get('/1/on', 'LightController@lighton');
 Route::get('/1/off', 'LightController@lightoff');

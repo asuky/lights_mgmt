@@ -5,8 +5,8 @@ import { Provider, connect } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducers/reducers';
-import { TOGGLE, toggleLight, requesting } from './actions/actions';
-import { ajaxSaga } from './sagas/ajax';
+import { TOGGLE, REQUESTING, INIT, toggleLight, requesting, initLight } from './actions/actions';
+import { allSaga } from './sagas/sagas';
 
 import MainUI from './components/MainUI';
 
@@ -29,11 +29,13 @@ const store = createStore(
     applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(ajaxSaga);
+sagaMiddleware.run(allSaga, store.dispatch);
 
 function mapStateToProps(state) {
     return {
-        label: state.button.label
+        disabled: state.button.disabled,
+        label: state.button.label,
+        data: state.button.data
     };
 }
 
@@ -42,8 +44,7 @@ function mapDispatchToProps(dispatch) {
         handleClick: () => { 
             console.log("handleClick!");
             console.log(store.getState());
-            dispatch(requesting());
-            //dispatch(toggleLight(store.getState())); 
+            dispatch(toggleLight());
         }
     };
 }
@@ -52,6 +53,8 @@ const AppContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(MainUI);
+
+store.dispatch(initLight());
 
 ReactDOM.render(
         <Provider store={store}>

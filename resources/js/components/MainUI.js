@@ -8,15 +8,25 @@ class MainUI extends Component {
         
     construct() {
         console.log("MainUI Constructor");
-        
     }
 
     render() {
+        //console.log(this.props.data);
+        const lightButtons = [];
+        for (let eachLight in this.props.data) {
+            lightButtons.push(
+                <LightButton
+                    disabled={ this.props.disabled }
+                    handleClick={ this.props.handleClick }
+                    label={ this.props.data[eachLight].name }
+                    lightID={ eachLight } />
+            );
+            console.log(this.props.data[eachLight]);
+        }
         return (
             <div>
-                <LightButton  handleClick={ this.props.handleClick } label={ this.props.label  } />
+                {lightButtons}
             </div>
-            
         );
     }
 }
