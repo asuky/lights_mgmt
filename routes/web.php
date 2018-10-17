@@ -17,3 +17,6 @@ Route::put('/', 'LightController@putState');
 Route::get('/list', 'LightController@listLights');
 Route::get('/1/on', 'LightController@lighton');
 Route::get('/1/off', 'LightController@lightoff');
+
+Route::post('/{id}', 'LightController@putState')
+        ->where(['id' => '[0-9]+']);

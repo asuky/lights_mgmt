@@ -35,15 +35,18 @@ function mapStateToProps(state) {
     return {
         disabled: state.button.disabled,
         label: state.button.label,
-        data: state.button.data
+        data: state.button.data,
+        lightStatus: state.button.lightStatus,
+        hoge: state.button.hoge
+        //handleClick: state.button.handleClick
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        handleClick: () => { 
-            console.log("handleClick!");
-            console.log(store.getState());
+        hoge: (props) => { 
+            console.log("hoge");
+            //console.log("handleClick!");
             dispatch(toggleLight());
         }
     };

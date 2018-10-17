@@ -17,11 +17,12 @@ class MainUI extends Component {
             lightButtons.push(
                 <LightButton
                     disabled={ this.props.disabled }
-                    handleClick={ this.props.handleClick }
+                    hoge={ this.props.hoge }
+                    //handleClick={ this.props.handleClick }
                     label={ this.props.data[eachLight].name }
                     lightID={ eachLight } />
             );
-            console.log(this.props.data[eachLight]);
+            //console.log(this.props.data[eachLight]);
         }
         return (
             <div>

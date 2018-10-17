@@ -17,18 +17,8 @@ function* setLightStatus() {
 }
 
 export function* toggleLightStatus() {
-    const response = yield call(setLightStatus);
-    
-    if (response) {
-        yield put(toggleLight());
-    }
+    //const response = yield call(setLightStatus);
 
 }
-
-/*
-export function* toggleSaga() {
-    
-}
-*/
 
 export default toggleLightStatus;
